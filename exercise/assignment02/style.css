@@ -1,0 +1,39 @@
+h1, h2, h3, h4, h5, h6, p {
+  font-family: 'Courier New', Courier, monospace;
+  width: 50%;
+  margin: 0 auto;
+  text-align: left;
+  word-wrap: break-word;
+}
+.wrapper {
+    color: white;
+    h1, h3 {
+        font-family: 'Courier New', Courier, monospace;
+  width: 100%;
+  margin: 0 auto;
+  text-align: left;
+  word-wrap: break-word;
+    }
+}
+.box {
+    background: red;
+    width: 300px;
+    height: 300px;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  box-sizing: border-box;
+}
+.box:hover {
+    background-color: blue;
+}
+.container {
+  text-align: center; /* Centers the element inside the container */
+}
+.bordered-text {
+  display: inline-block; /* Ensures the border wraps tightly around the text */
+  border: 2px solid black; /* A 2px solid black border */
+  padding: 5px; /* Optional: Adds space between the text and the border */
+  font-size: 16px; /* Optional: Adjust the font size */
+}
