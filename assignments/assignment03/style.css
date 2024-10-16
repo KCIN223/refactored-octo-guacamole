@@ -1,0 +1,85 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.main-container {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+}
+
+.left-column {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #f3f3f3;
+    text-align: center;
+}
+
+.portrait {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.author-name {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+.author-date {
+    font-size: 1em;
+    color: #555;
+}
+
+.right-column {
+    flex: 2;
+    padding: 20px;
+}
+
+.container {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    line-height: 1.6em;
+}
+
+footer {
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.click-box {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: red;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100px;
+    text-align: center;
+}
+
+.click-box a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
