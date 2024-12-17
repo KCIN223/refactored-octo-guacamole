@@ -1,0 +1,28 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+body {
+    font-family: "Roboto", sans-serif;
+    line-height: 1.4;
+    max-width: 50vw;
+}
+
+.neon {
+    color: #00d200;
+    text-decoration: none;
+}
+
+.container {
+    padding: 24px;
+}
+h3,
+p {
+    padding-bottom: 20px;
+}

@@ -1,0 +1,51 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html,
+body {
+    height: 100%;
+} 
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    min-height: 100vh;
+    background-color: antiquewhite;
+}
+header,
+footer, 
+main {
+    padding: 20px;
+   border: solid 1px black;
+    color: #141414;
+}
+header,
+footer {
+    height: 20vh;
+}
+main {
+    height: 60vh;
+}
+.invite-container {
+    padding: 20px;
+}
+.section {
+    padding: 30px;
+}
+
+.dark {
+    font-weight: bold;
+}
+
+.light {
+color: lightgrey;
+}
+
+.small {
+    font-size: 12px;
+}
+
+.big {
+    font-size: 24px;
+}
