@@ -145,6 +145,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const initializeGrid = async () => {
         for (const folder of folders) {
             await createGridItemsForFolder(folder);
+            // Reapply dark mode logic after grid items are created
+if (document.body.classList.contains("night-mode")) {
+    document.querySelectorAll(".grid-image").forEach((img) => {
+        img.src = img.dataset.dark || img.dataset.default;
+    });
+}
+
         }
     };
 

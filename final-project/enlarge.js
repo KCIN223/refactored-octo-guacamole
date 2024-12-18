@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    const enlargeImagesPath = "/testing%20final%20project/enlarge-images/";
+    const enlargeImagesPath = "./enlarge-images/";
     const extensions = ["jpg", "png"];
     const movieInfo = {}; // Change to an object to map index to data
 
     // Fetch and map movie information from the CSV file
     const fetchMovieInfo = async () => {
         try {
-            const response = await fetch("info/movie-info.csv");
+            const response = await fetch("./info/movie-info.csv");
             if (!response.ok) throw new Error("CSV file not found");
 
             const text = await response.text();
