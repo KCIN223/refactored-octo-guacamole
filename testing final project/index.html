@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Image Grid</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Function Bar -->
+    <div class="function-bar">
+        <div class="grid-list">
+            <button class="info-btn" id="info-btn">INFO</button>
+            <a href="index.html"><button id="grid-view" class="active">GRID</button></a>
+            <a href="list.html"><button id="list-view">LIST</button></a>
+        </div>
+        <div class="theme-container">
+            <span class="theme-label">Light</span>
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider"></span>
+            </label>
+            <span class="theme-label">Dark</span>
+        </div>
+    </div>
+
+    <!-- Info Container -->
+    <div class="info-container" id="info-container">
+        <h3>Welcome to the Image Grid</h3>
+        <p>Click on an image to view details. Hover to see alternate visuals. Switch to dark mode for a different experience.</p>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="grid-container" id="catalog">
+            <!-- Images will be dynamically loaded here -->
+        </div>
+    </main>
+
+    <!-- Lightbox Structure -->
+    <div id="lightbox-modal" class="lightbox-modal" style="display: none;">
+        <div class="lightbox-content">
+            <div class="lightbox-header">
+                <span id="lightbox-category">Category: N/A</span>
+                <span id="lightbox-close" class="lightbox-close">&times;</span>
+            </div>
+            <img id="lightbox-image" src="" alt="Lightbox Image">
+            <div class="lightbox-details">
+                <p><strong>Film Name:</strong> <span id="lightbox-movie-name">N/A</span></p>
+                <p><strong>Director:</strong> <span id="lightbox-director">N/A</span></p>
+                <p><strong>Release Date:</strong> <span id="lightbox-year">N/A</span></p>
+                <p><strong>Timestamp:</strong> <span id="lightbox-timestamp">N/A</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Dynamic Image Grid | All rights reserved</p>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="image-sort.js"></script>
+    <script src="categories.js"></script>
+    <script src="lightbox.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

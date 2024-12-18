@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List View</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="no-transition">
+    <!-- Function Bar -->
+    <div class="function-bar">
+        <div class="grid-list">
+            <button class="info-btn" id="info-btn">INFO</button>
+            <a href="index.html"><button id="grid-view">GRID</button></a>
+            <a href="list.html"><button id="list-view" class="active">LIST</button></a>
+        </div>
+        <div class="theme-container">
+            <span class="theme-label">Light</span>
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider"></span>
+            </label>
+            <span class="theme-label">Dark</span>
+        </div>
+    </div>
+    
+    <!-- Info Container -->
+    <div class="info-container" id="info-container">
+        <p>
+            <h3>List View Info</h3>
+            This page currently represents the "list" view. You can toggle the theme, show/hide info, and return to the grid view by clicking the GRID button.
+        </p>
+    </div>
+
+    <!-- Main Content -->
+    <!-- No catalog container, no grid items, just the text in the info container -->
+    <main></main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Dynamic Grid Layout | All rights reserved</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
