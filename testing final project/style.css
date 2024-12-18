@@ -93,8 +93,8 @@ body.night-mode .function-bar .top-left button:hover {
 .function-bar .switch {
     position: relative;
     display: inline-block;
-    width: 40px; /* Switch width */
-    height: 20px; /* Switch height */
+    width: 40px; 
+    height: 20px; 
 }
 
 .function-bar .switch input {
@@ -126,7 +126,7 @@ body.night-mode .function-bar .top-left button:hover {
 }
 
 .function-bar input:checked + .slider {
-    background-color: #FF5C00; /* Switch track in dark mode */
+    background-color: #FF5C00; 
 }
 
 .function-bar input:checked + .slider:before {
@@ -176,7 +176,7 @@ body.night-mode .info-container {
 /* Grid Container */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(10, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
     gap: 1.2vw;
     padding: 80px 10px 10px;
     justify-content: center;
@@ -191,12 +191,12 @@ body.night-mode .grid-container {
     transition: border-color 0.3s ease;
 }
 
+/* Grid Item */
 .grid-item {
-    position: relative; /* Added this line to create positioning context */
-    overflow: visible;  /* Changed from hidden to visible so corners aren't clipped */
+    position: relative;
     aspect-ratio: 1 / 1; 
     background-color: #000000;
-    border: 1.8px solid transparent; 
+    border: 1.8px solid transparent;
     border-image: repeating-linear-gradient(
         to bottom right, 
         black 0, black 15px, 
@@ -210,9 +210,9 @@ body.night-mode .grid-container {
     text-align: center;
     cursor: pointer;
     transition: background-color 0.3s ease, border-color 0.3s ease;
-    /* previously overflow: hidden; is now overflow: visible; */
 }
 
+/* Night Mode Styling for Grid Items */
 body.night-mode .grid-item {
     border-image: repeating-linear-gradient(
         to bottom right, 
@@ -223,10 +223,30 @@ body.night-mode .grid-item {
     color: #FF5C00;
 }
 
-/* Pseudo-elements for top-left and bottom-right corners */
+/* Responsive Grid Adjustment */
+@media (min-width: 1200px) {
+    .grid-container {
+        grid-template-columns: repeat(10, 1fr); 
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(5, 1fr); 
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
+
+/* top-left and bottom-right corners */
 .grid-item {
     position: relative;
-    overflow: visible; /* If needed */
+    overflow: visible; 
 }
 
 .grid-item .corner {
@@ -287,78 +307,8 @@ body.night-mode .grid-item:hover {
     height: auto;      
     object-fit: contain;
 }
-/* Existing CSS ... */
 
-/* Modal (Lightbox) Styles */
-.lightbox-modal {
-    display: none; /* Hidden by default */
-    position: fixed; 
-    z-index: 10000; /* Ensure it's on top of all other elements */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent backdrop */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.lightbox-content {
-    position: relative;
-    display: flex;
-    align-items: center;
-    max-width: 80vw;
-    max-height: 80vh;
-}
-
-.lightbox-content img {
-    max-width: 100%;
-    max-height: 100%;
-    margin: 0 auto;
-    border: 2px solid #fff;
-    border-radius: 5px;
-}
-
-.lightbox-prev, .lightbox-next {
-    color: #fff;
-    font-size: 2em;
-    cursor: pointer;
-    user-select: none;
-    padding: 10px;
-    transition: color 0.3s ease;
-}
-
-.lightbox-prev:hover, .lightbox-next:hover {
-    color: #FF5C00; /* Highlight color on hover */
-}
-
-.lightbox-caption {
-    color: #fff;
-    text-align: center;
-    margin-top: 15px;
-    font-family: "Courier New", Courier, monospace;
-    max-width: 80vw;
-}
-
-.lightbox-close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: #fff;
-    font-size: 3em;
-    font-weight: bold;
-    cursor: pointer;
-    user-select: none;
-    transition: color 0.3s ease;
-}
-
-.lightbox-close:hover {
-    color: #FF5C00; /* Highlight color on hover */
-}
-
-/* Ensure the function bar is on top */
+/* Function bar */
 .function-bar {
     position: fixed;
     top: 50px;
@@ -374,26 +324,6 @@ body.night-mode .grid-item:hover {
     align-items: center;
 }
 
-/* Night Mode for Modal */
-body.night-mode .lightbox-modal {
-    background-color: rgba(0, 0, 0, 0.9);
-}
-
-body.night-mode .lightbox-content img {
-    border-color: #FF5C00;
-}
-
-body.night-mode .lightbox-caption {
-    color: #FF5C00;
-}
-
-body.night-mode .lightbox-prev, 
-body.night-mode .lightbox-next,
-body.night-mode .lightbox-close {
-    color: #FF5C00;
-}
-
-/* Responsive Adjustments */
 @media (max-width: 600px) {
     .function-bar {
         top: 10px;
@@ -427,70 +357,244 @@ body.night-mode .footer {
     border-color: #FF5C00;
     color: #FF5C00;
 }
+/* clickable layer */
 .click-layer {
-    position: absolute;
+    position: absolute; 
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: transparent; /* Invisible layer */
-    cursor: pointer; /* Indicate clickability */
-    z-index: 5; /* Ensure it is on top of the grid item */
+    width: 100%;  
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0); 
+    z-index: 1000; 
+    cursor: pointer; 
 }
-/* Lightbox Overlay */
-#lightbox {
+.enlarged-image-modal {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    display: flex;
-    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8); 
     justify-content: center;
+    align-items: center;
     z-index: 1000;
+    transition: background-color 0.3s ease;
 }
 
-#lightbox.lightbox-hidden {
-    display: none;
+body.night-mode .enlarged-image-modal {
+    background-color: rgba(0, 0, 0, 0.9); 
 }
 
-.lightbox-content {
-    position: relative;
-    width: 80%;
-    max-width: 800px;
+.modal-content {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    text-align: left; 
+    gap: 20px; 
+}
+#movie-info {
+    align-self: flex-start;
+    max-width: 80%;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1.5px solid #000;
 }
 
-#lightbox-image {
-    width: 100%;
-    height: auto;
+body.night-mode #movie-info {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #FF5C00;
+    border: 1px solid #ff5c00;
 }
-
-#lightbox-close {
+.modal-close {
     position: absolute;
     top: 10px;
     right: 20px;
+    font-size: 2em;
     color: white;
-    font-size: 30px;
     cursor: pointer;
-    z-index: 1010;
 }
 
-.lightbox-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+#enlarged-image {
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.modal-controls {
+    margin-top: 10px;
+}
+
+.modal-controls button {
+    background: none;
+    border: 2px solid white;
     color: white;
-    font-size: 40px;
+    font-size: 1.5em;
+    padding: 10px;
     cursor: pointer;
-    user-select: none;
-    z-index: 1010;
 }
 
-.lightbox-nav-prev {
-    left: 10px;
+.modal-controls button:hover {
+    background: rgba(255, 255, 255, 0.2);
 }
 
-.lightbox-nav-next {
-    right: 10px;
+/* Grid Item Image and Info Box */
+.grid-item img {
+    width: 100%;
+    height: auto;
+    max-width: 90vw;
+    max-height: 50.625vw;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+#enlarged-image {
+    width: 63vw;
+    object-fit: cover;
+    max-width: 100%;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .grid-item img,
+    #enlarged-image {
+        width: 95vw;
+        height: 53.4375vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-item img,
+    #enlarged-image {
+        width: 100vw;
+        height: 56.25vw;
+    }
+}
+
+.grid-item .info-box {
+    width: 100%; 
+    max-width: 200px; 
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 10px;
+    margin-top: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .grid-item img {
+        max-width: 150px;
+    }
+
+    .grid-item .info-box {
+        max-width: 150px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-item img {
+        max-width: 100px;
+    }
+
+    .grid-item .info-box {
+        max-width: 100px;
+        font-size: 0.8em;
+    }
+
+    .modal-close {
+        font-size: 1.5em;
+    }
+
+    .modal-controls button {
+        font-size: 1em;
+    }
+}
+
+.modal-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.modal-controls button {
+    background: none;
+    border: 2px solid black;
+    color: black;
+    font-size: 2em;
+    width: 25px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+
+.modal-controls button:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+body.night-mode .modal-controls button {
+    border: 2px solid white;
+    color: white;
+}
+
+body.night-mode .modal-controls button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.modal-controls button:before {
+    line-height: 1;
+}
+
+.categories-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 120px);
+    margin: 0;
+    padding: 0;
+}
+
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 80%;
+}
+.category-item {
+    border: 2px solid #222; 
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.category-item:hover {
+    border-color: #ff5c00;
+    transform: scale(1.05);
+}
+
+body.dark-mode .category-item {
+    border: 2px solid #ff0000;
+    background-color: #333;
+    color: #f4f4f4;
+}
+
+body.dark-mode .category-item:hover {
+    border-color: #ff5c00;
+    transform: scale(1.05);
 }

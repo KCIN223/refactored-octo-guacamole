@@ -26,22 +26,31 @@
     
     <!-- Info Container -->
     <div class="info-container" id="info-container">
-        <p>
-            <h3>List View Info</h3>
-            This page currently represents the "list" view. You can toggle the theme, show/hide info, and return to the grid view by clicking the GRID button.
-        </p>
+        <h3>Welcome to the Quote Catalog</h3>
+        <p>Select a category to explore quotes and images.</p>
     </div>
 
     <!-- Main Content -->
-    <!-- No catalog container, no grid items, just the text in the info container -->
-    <main></main>
+    <main class="categories-wrapper">
+        <ul class="category-grid">
+            <li class="category-item" data-index="1">I Will Always Love You</li>
+            <li class="category-item" data-index="18">Nothing Lasts Forever</li>
+            <li class="category-item" data-index="29">What Doesn't Kill You Makes You Stronger</li>
+            <li class="category-item" data-index="39">It Is Time to Move On</li>
+            <li class="category-item" data-index="55">Have a Good Day</li>
+            <li class="category-item" data-index="69">Everything Happens for a Reason</li>
+        </ul>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2024 Dynamic Grid Layout | All rights reserved</p>
+        <p>&copy;  2024 Quote Catalog| All rights reserved</p>
     </footer>
 
     <!-- JavaScript -->
+    <script src="enlarge.js"></script>
+    <script src="image-sort.js"></script>
+    <script src="categories.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

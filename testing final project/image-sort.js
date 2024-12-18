@@ -3,10 +3,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const themeToggleSwitch = document.getElementById("theme-toggle");
 
     const treatedImagesPath = "./treated-images/";
-    const folders = ["i-will-always-love-you", "nothing-lasts-forever"];
-    const totalImagesPerFolder = 17;
+    const folders = ["i-will-always-love-you", "nothing-lasts-forever", "what-doesn't-kill-you-makes-you-stronger", "it-is-time-to-move-on", "have-a-good-day", "everything-happens-for-a-reason"];
+    const totalImagesPerFolder = {}; // Define total images dynamically per folder
     const extensions = ["jpg", "png"];
 
+    // Total images configuration for each folder
+    totalImagesPerFolder["i-will-always-love-you"] = 17;
+    totalImagesPerFolder["nothing-lasts-forever"] = 11;
+    totalImagesPerFolder["what-doesn't-kill-you-makes-you-stronger"] = 10;
+    totalImagesPerFolder["it-is-time-to-move-on"] = 16;
+    totalImagesPerFolder["have-a-good-day"] = 14;
+    totalImagesPerFolder["everything-happens-for-a-reason"] = 6;
     /**
      * Helper function to check if an image file exists.
      * @param {string} url - URL of the image.
@@ -54,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const createGridItemsForFolder = async (folder) => {
         const folderPath = `${treatedImagesPath}${folder}/`;
 
-        for (let i = 1; i <= totalImagesPerFolder; i++) {
+        for (let i = 1; i <= totalImagesPerFolder[folder]; i++) {
             // Find valid image paths
             const imgPaths = {
                 default: await findValidImage(`${folderPath}image-default(${i})`),
@@ -67,6 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Create grid item
             const gridItem = document.createElement("div");
             gridItem.className = "grid-item";
+            gridItem.style.position = "relative"; // Ensure grid item positioning
 
             // Create image element
             const img = document.createElement("img");
@@ -85,6 +93,24 @@ document.addEventListener("DOMContentLoaded", () => {
             gridItem.appendChild(img);
             addCornerBoxes(gridItem);
 
+            // Add click layer
+            const clickLayer = document.createElement("div");
+            clickLayer.classList.add("click-layer");
+            clickLayer.style.position = "absolute";
+            clickLayer.style.top = "0";
+            clickLayer.style.left = "0";
+            clickLayer.style.width = "100%";
+            clickLayer.style.height = "100%";
+            clickLayer.style.pointerEvents = "auto"; // Allow click handling
+            gridItem.appendChild(clickLayer);
+
+            // Attach click event to click layer
+            clickLayer.addEventListener("click", (event) => {
+                event.stopPropagation(); // Prevent interference with other event listeners
+                console.log(`Click-layer clicked for image ${i}`);
+                showModal(i); // Integrate enlarge.js showModal function
+            });
+
             // Hover logic
             gridItem.addEventListener("mouseenter", async () => {
                 if (img.dataset.hoverChecked === "false") {
@@ -95,7 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 img.src = img.dataset.hover;
             });
 
-            // Night mode and default fallback logic
             gridItem.addEventListener("mouseleave", async () => {
                 if (document.body.classList.contains("night-mode")) {
                     if (img.dataset.darkChecked === "false") {
@@ -163,4 +188,27 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initialize the grid and theme toggle on page load
     initializeGrid();
     initializeThemeToggle();
+
+    /**
+     * Enlarge.js compatibility: Attach modal logic for enlarged images.
+     */
+    const showModal = (index) => {
+        const imgPath = `/testing%20final%20project/enlarge-images/image-enlarge(${index}).jpg`;
+        const modal = document.getElementById("enlarged-image-modal");
+        const enlargedImage = document.getElementById("enlarged-image");
+
+        if (modal && enlargedImage) {
+            enlargedImage.src = imgPath;
+            modal.style.display = "flex";
+        }
+    };
+
+    const closeModal = () => {
+        const modal = document.getElementById("enlarged-image-modal");
+        if (modal) modal.style.display = "none";
+    };
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+    });
 });
