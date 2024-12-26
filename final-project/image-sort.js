@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const treatedImagesPath = "./treated-images/";
     const folders = ["i-will-always-love-you", "nothing-lasts-forever", "what-doesn't-kill-you-makes-you-stronger", "it-is-time-to-move-on", "have-a-good-day", "everything-happens-for-a-reason"];
-    const totalImagesPerFolder = {}; // Define total images dynamically per folder
+    const totalImagesPerFolder = {}; 
     const extensions = ["jpg", "png"];
 
     // Total images configuration for each folder
@@ -16,8 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
     totalImagesPerFolder["everything-happens-for-a-reason"] = 6;
     /**
      * Helper function to check if an image file exists.
-     * @param {string} url - URL of the image.
-     * @returns {Promise<boolean>} - Resolves to true if image exists, false otherwise.
+     * @param {string} url 
+     * @returns {Promise<boolean>} 
      */
     const imageExists = (url) => {
         return new Promise((resolve) => {
@@ -29,9 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     /**
-     * Helper function to find a valid image path given a base path and possible extensions.
-     * @param {string} basePath - Base path of the image without extension.
-     * @returns {Promise<string|null>} - Resolves to the valid image path or null.
+    
+     * @param {string} basePath 
+     * @returns {Promise<string|null>} 
      */
     const findValidImage = async (basePath) => {
         for (const ext of extensions) {
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const initializeGrid = async () => {
         for (const folder of folders) {
             await createGridItemsForFolder(folder);
-            // Reapply dark mode logic after grid items are created
+
 if (document.body.classList.contains("night-mode")) {
     document.querySelectorAll(".grid-image").forEach((img) => {
         img.src = img.dataset.dark || img.dataset.default;
